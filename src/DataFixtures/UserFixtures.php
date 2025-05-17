@@ -19,8 +19,8 @@ class UserFixtures extends Fixture
     {
         for ($i = 0; $i < 5; ++$i) {
             $user = new User();
-            $user->setEmail('user' . $i . '@example.com');
-            $user->setPassword($this->passwordHasher->hashPassword($user, 'password' . $i));
+            $user->setEmail('user' . ($i+1) . '@example.com');
+            $user->setPassword($this->passwordHasher->hashPassword($user, 'password' . ($i+1)));
             $manager->persist($user);
         }
 
