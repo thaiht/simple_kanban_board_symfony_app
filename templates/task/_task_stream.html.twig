@@ -1,0 +1,51 @@
+{# New task form #}
+{% block new_task %}
+    <turbo-stream action="update" target="task_info">
+        <template>
+            {% include 'task/_new_task.html.twig' %}
+        </template>
+    </turbo-stream>
+{% endblock %}
+
+{# Append new task #}
+{% block new_success %}
+    <turbo-stream action="append" target="{{ task.status }}">
+        <template>
+            {% include 'task/_task.html.twig' %}
+        </template>
+    </turbo-stream>
+{% endblock %}
+
+{# Move task between columns #}
+{% block move_task %}
+    <turbo-stream action="remove" target="task_{{ task.id }}"></turbo-stream>
+{% endblock %}
+
+{# Delete task #}
+{% block delete_task %}
+    <turbo-stream action="remove" target="task_{{ taskId }}"></turbo-stream>
+{% endblock %}
+
+{% block update_form %}
+    <turbo-stream action="update" target="task_info">
+        <template>
+            {% include 'task/_edit_task.html.twig' %}
+        </template>
+    </turbo-stream>
+{% endblock %}
+
+{% block update_success %}
+    <turbo-stream action="update" target="task_{{ task.id }}">
+        <template>
+            {% include 'task/_task.html.twig' %}
+        </template>
+    </turbo-stream>
+{% endblock %}
+
+{% block tasks_list %}
+    <turbo-stream action="update" target="tasks">
+        <template>
+            {% include 'task/_tasks.html.twig' %}
+        </template>
+    </turbo-stream>
+{% endblock %}

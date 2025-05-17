@@ -1,0 +1,16 @@
+<div class="row" data-controller="task">
+    {% for column in ['todo', 'in_progress', 'done'] %}
+        <div class="col-md-4">
+            <h5 class="text-capitalize">{{ column|replace({'_': ' '}) }}</h5>
+            <div id="{{ column }}" class="border rounded p-2" style="min-height: 200px;"
+                 data-task-target="column"
+                 data-column-id="{{ column }}">
+                {% for task in tasks %}
+                    {% if task.status == column %}
+                        {% include 'task/_task.html.twig' %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

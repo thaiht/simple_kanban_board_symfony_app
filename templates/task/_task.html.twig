@@ -1,0 +1,18 @@
+<turbo-frame id="task_{{ task.id }}">
+    <div class="card mb-2" data-task-id="{{ task.id }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ task.title }}</h5>
+            <p class="card-text">{{ task.description }}</p>
+            <div class="mt-2">
+                <form method="post" action="{{ path('task_delete', {id: task.id}) }}" class="d-inline float-end">
+                    <button class="btn btn-sm btn-outline-secondary">{{ ux_icon('bi:trash', {height: '16px', width: '16px', 'aria-hidden': true}) }}</button>
+                </form>
+                <form method="post" action="{{ path('task_update', {id: task.id}) }}" class="d-inline float-end">
+                    <button class="btn btn-sm btn-outline-secondary"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        {{ ux_icon('bi:pencil', {height: '16px', width: '16px', 'aria-hidden': true}) }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</turbo-frame>
